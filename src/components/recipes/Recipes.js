@@ -1,6 +1,6 @@
 import React from 'react'
 import RecipeItem from '../recipeItem/RecipeItem';
-import Form from '../form/form';
+import Form from '../form/Form';
 import { useState } from 'react';
 
 const Recipes = () => {
