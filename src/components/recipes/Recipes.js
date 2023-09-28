@@ -65,7 +65,7 @@ const Recipes = () => {
         setEnteredChef(value)
       }
 
-      const submitRecipeHandler=(event)=>{
+      const submitRecipeHandler=()=>{
         const recipeData={
             id: lastId + 1,
             recipeName:enteredName,
@@ -83,7 +83,7 @@ const Recipes = () => {
 
   return (
     <div>
-        <RecipeItem recipes={newRecipes}/>
+      <RecipeItem recipes={newRecipes}/>
        <Form
         setEnteredNameHandler={setEnteredNameHandler}
         setEnteredIngredientsHandler={setEnteredIngredientsHandler}

@@ -1,12 +1,15 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 
 
-const Login = () => {
+const Login = ({onLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+
+  const navigate=useNavigate();
 
   const emailChangeHandler = (event) => {
     if (emailRef.current.value.length > 0) {
@@ -36,12 +39,16 @@ const Login = () => {
       return;
     }
     alert(`Su email es: ${email} y su password es: ${password}`);
+
+    onLogin();
+    navigate("/recetas");
   };
 
   return (
-    <div className="login-container">
+    <div>
+      <div className="login-container">
       <div className="login-box">
-        <h4>¡Bienvenidos a RecetAR!</h4>
+        <h4>Registrarse</h4>
         <div className="input-container">
           <input
             className="input-control"
@@ -67,6 +74,7 @@ const Login = () => {
         </button>
       </div>
     </div>
+  </div>
   );
 };
 

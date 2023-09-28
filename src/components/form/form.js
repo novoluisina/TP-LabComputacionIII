@@ -26,7 +26,7 @@ const Form = ({setEnteredNameHandler,setEnteredIngredientsHandler,
     
   return (
     <form onSubmit={changeRecipeHandler}>
-            <h2>Nueva receta</h2>
+            <h2>Agregar nueva receta</h2>
             <div >
                 <div>
                     <label>Nombre</label><br/>
