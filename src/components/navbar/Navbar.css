@@ -1,0 +1,14 @@
+.Navbar {
+  display: flex;
+  gap: 30px;
+  background-color: grey;
+  height: 50px;
+  align-items: center;
+  padding: 0px 50px;
+  justify-content: flex-end;
+}
+
+.Navbar > a {
+  text-decoration: none;
+  color: white;
+}
