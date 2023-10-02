@@ -3,7 +3,6 @@ import { useState } from 'react'
 import './App.css'
 import Login from './components/login/Login'
 import Home from './components/home/Home'
-import Navbar from './components/navbar/Navbar'
 import Recipes from './components/recipes/Recipes'
 import Protected from './components/protected/Protected'
 import GeneralView from './components/generalView/GeneralView'
@@ -17,21 +16,23 @@ function App() {
 
   const router = createBrowserRouter([
     { path: '/', 
-      element: <GeneralView>
-      <Home/>
+      element: 
+      <GeneralView>
+        <Home/>
       </GeneralView> },
 
     { path: '/login',
-      element: <GeneralView>
+      element: 
+      <GeneralView>
         <Login onLogin={loginHandler} />
       </GeneralView>},
       
     {path: '/recetas',
       element: 
         <GeneralView>
-        <Protected isLoggedIn={isLoggedIn}>
-          <Recipes/>
-        </Protected>
+          <Protected isLoggedIn={isLoggedIn}>
+            <Recipes/>
+          </Protected>
         </GeneralView>
       
     }

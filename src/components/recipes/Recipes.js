@@ -91,34 +91,7 @@ const Recipes = () => {
       asset:
         'https://assets.elgourmet.com/wp-content/uploads/2023/09/UO_EPISODICAS_TORTILLA_DE_VEGETALES_CON_CHIPS_DE_BONIATO-5-1024x683.jpg.webp'
     }
-    // {
-    //   id: 1,
-    //   recipeName: 'Apple pie',
-    //   ingredients: `PARA EL RELLENO
-    //     Manzanas verdes 1 k
-    //     Canela molida Cantidad necesaria
-    //     Licor de manzana Cantidad necesaria
-    //     Polvo para flan 50 grs.
-    //     Semillas de zapallo Cantidad necesaria
-    //     PARA LA EMULSIÓN DE MANZANAS
-    //     Jugo de limón Cantidad necesaria
-    //     Manzanas golden 3 Unidades
-    //     Aceite de oliva de manzanilla Cantidad necesaria
-    //     Azúcar 50 grs.
-    //     PARA LA MASA
-    //     Harina 350 grs.
-    //     Huevos 5 Unidades
-    //     Leche 160 cc
-    //     Manteca 140 g
-    //     Polvo de hornear 20 grs.
-    //     Almidón de maíz 50 grs.
-    //     Sal Cantidad necesaria
-    //     Esencia de vainilla Cantidad necesaria
-    //     Azúcar orgánico 250 g
-    //     Aceite de canola 140 cc`,
-    //   preparation: 'cortar las manzanas',
-    //   chef: 'Osvaldo Gross'
-    // }
+   
   ]
 
   const [enteredName, setEnteredName] = useState('')
