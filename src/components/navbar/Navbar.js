@@ -1,22 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
-  // const handleRegisterClick = () => {
-  //  navigate("/login")
-  // };
+  const handleRegisterClick = () => {
+   navigate("/login")
+  };
+
+  const handleHomeClick =() =>{
+    navigate("/")
+  }
+
+  const handleRecipesClick=()=>{
+    navigate("/recetas")
+  }
 
   return (
     <nav className='Navbar'>
-      {/* <button onClick={handleRegisterClick}>Registrarse</button> */}
-      <Link to='/'>Home</Link>
-      <Link to='/recetas'>Recetas</Link>
-      <Link to='/chefs'>Chefs</Link>
-      <button>Cerrar sesión</button>
-      {/* los botones tienen que aparecer dependiendo de los permisos */}
+      <ul>
+          <li onClick={handleHomeClick}>Home</li>
+          <li onClick={handleRegisterClick}>Registrarse</li>
+          <li onClick={handleRecipesClick}>Recetas</li>
+          <button>Cerrar sesión</button>
+      </ul>
     </nav>
   )
 }
