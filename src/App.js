@@ -1,4 +1,4 @@
-import {RouterProvider,createBrowserRouter} from 'react-router-dom'
+import {Form, RouterProvider,createBrowserRouter} from 'react-router-dom'
 import { useState } from 'react'
 import './App.css'
 import Login from './components/login/Login'
@@ -35,7 +35,7 @@ function App() {
           </Protected>
         </GeneralView>
       
-    }
+    },
 
   ])
   return <RouterProvider router={router}/>

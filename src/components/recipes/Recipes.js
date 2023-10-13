@@ -1,9 +1,11 @@
 import React from 'react'
-// import RecipeItem from '../recipeItem/RecipeItem'
-import Form from '../form/Form'
 import { useState } from 'react'
-import { CardRecipe } from '../cardRecipe/CardRecipe'
 import './Recipes.css'
+
+// import RecipeItem from '../recipeItem/RecipeItem'
+import { CardRecipe } from '../cardRecipe/CardRecipe'
+import Comment from '../comment/Comment'
+import NewRecipe from '../newRecipe/NewRecipe'
 
 const Recipes = () => {
   const recipes = [
@@ -99,7 +101,11 @@ const Recipes = () => {
   const [enteredPreparation, setEnteredPreparation] = useState('')
   const [enteredChef, setEnteredChef] = useState('')
   const [newRecipes, setNewRecipes] = useState(recipes)
-  const [lastId, setLastId] = useState(1)
+  const[showForm,setShowFom]=useState(true)
+  const[newComment,setNewComment]=useState([])
+
+  const newRecipeId = newRecipes[newRecipes.length - 1].id + 1;
+  const newCommentId = newComment.length > 0 ? newComment[newComment.length - 1].id + 1 : 1;
 
   const setEnteredNameHandler = (value) => {
     setEnteredName(value)
@@ -119,7 +125,7 @@ const Recipes = () => {
 
   const submitRecipeHandler = () => {
     const recipeData = {
-      id: lastId + 1,
+      id: newRecipeId,
       recipeName: enteredName,
       ingredients: enteredIngredients,
       preparation: enteredPreparation,
@@ -130,18 +136,43 @@ const Recipes = () => {
     setEnteredIngredients('')
     setEnteredPreparation('')
     setEnteredChef('')
-    setLastId(lastId + 1)
   }
+  const deletedRecipe = (id) => {
+    const updatedRecipes = newRecipes.filter((recipe) => recipe.id !== id);
+    const updatedRecipesWithNewIds = updatedRecipes.map((recipe, index) => ({
+      ...recipe,id: index + 1,}));
+    
+    setNewRecipes(updatedRecipesWithNewIds);
+  }
+
+  const changeShowFormHandler=()=>{
+    setShowFom(!showForm)
+  }
+  
+  const setCommentHandler=(value)=>{
+    setNewComment(value)
+  }
+
+  // const addCommentHandler = () => {
+  //   const commentData = {
+  //     id: newCommentId,
+  //     textComment: newComment,
+  //   };
+  //   setNewComment([...newComment, commentData]);
+  //   setNewComment('');
+  // };
 
   return (
     <div>
       {/* <RecipeItem recipes={newRecipes} /> */}
       <div className='CardsContainer'>
-        {recipes.map(({ id, title, time, asset }) => {
-          return <CardRecipe key={id} title={title} time={time} asset={asset} />
+        {newRecipes.map(({ id, title, time, asset }) => {
+          return <CardRecipe id={id} title={title} time={time} asset={asset} onDelete={deletedRecipe}/>
         })}
       </div>
-      <Form
+      {showForm ? (<button type="button" onClick={changeShowFormHandler}>Agregar Nueva Receta</button>)
+    :(
+      <NewRecipe
         setEnteredNameHandler={setEnteredNameHandler}
         setEnteredIngredientsHandler={setEnteredIngredientsHandler}
         setEnteredPreparationHandler={setEnteredPreparationHandler}
@@ -151,7 +182,12 @@ const Recipes = () => {
         enteredPreparation={enteredPreparation}
         enteredChef={enteredChef}
         submitRecipeHandler={submitRecipeHandler}
-      />
+      />)}
+
+      <div>
+        <Comment setCommentHandler={setCommentHandler} />
+      </div>
+      
     </div>
   )
 }

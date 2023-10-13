@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Form = ({setEnteredNameHandler,setEnteredIngredientsHandler,
+const NewRecipe = ({setEnteredNameHandler,setEnteredIngredientsHandler,
     setEnteredPreparationHandler,setEnteredChefHandler,enteredName,
     enteredIngredients,enteredPreparation,enteredChef,submitRecipeHandler}) => {
     const changeEnteredNameHandler=(event)=>{
@@ -64,4 +64,4 @@ const Form = ({setEnteredNameHandler,setEnteredIngredientsHandler,
   )
 }
 
-export default Form
+export default NewRecipe
