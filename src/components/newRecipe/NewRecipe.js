@@ -1,66 +1,64 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const NewRecipe = ({setEnteredNameHandler,setEnteredIngredientsHandler,
-    setEnteredPreparationHandler,setEnteredChefHandler,enteredName,
-    enteredIngredients,enteredPreparation,enteredChef,submitRecipeHandler}) => {
-    const changeEnteredNameHandler=(event)=>{
-        setEnteredNameHandler(event.target.value)
-    }
+const NewRecipe = () => {
+  const [recipeName, setRecipeName] = useState('')
+  const [recipeTime, setRecipeTime] = useState('')
+  const [recipeAsset, setRecipeAsset] = useState('')
 
-    const changeEnteredIngredientsHandler=(event)=>{
-        setEnteredIngredientsHandler(event.target.value)
-    }
+  const crearReceta = (event) => {
+    event.preventDefault()
+    fetch('http://localhost:8000/recipes', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJBZG1pbmlzdHJhdG9yICIsImF2YXRhciI6Imh0dHBzOi8vcm9ib2hhc2gub3JnL2VhcXVlcXVhc2luY2lkdW50LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjk4NTE4NjY4LCJleHAiOjE2OTg1MTk1Njh9.dJ0DAsyVDAAUer1uVUsFQvEcH4uv93sRkqVKQ5NsCso'
+      },
+      body: JSON.stringify({
+        title: recipeName,
+        time: recipeTime,
+        asset: recipeAsset
+          ? recipeAsset
+          : 'https://assets.elgourmet.com/wp-content/uploads/2023/09/shutterstock_1803865330-e1695920586800-1024x556.jpg.webp'
+      })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Receta creada')
+        console.log(data)
+      })
+      .catch((err) => console.error(err))
+  }
 
-    const changeEnteredPreparationHandler=(event)=>{
-        setEnteredPreparationHandler(event.target.value)
-    }
-
-    const changeEnteredChefHandler=(event)=>{
-        setEnteredChefHandler(event.target.value)
-    }
-
-    const changeRecipeHandler=(event)=>{
-        event.preventDefault();
-        submitRecipeHandler();
-    }
-    
   return (
-    <form onSubmit={changeRecipeHandler}>
-            <h2>Agregar nueva receta</h2>
-            <div >
-                <div>
-                    <label>Nombre</label><br/>
-                    <input value={enteredName}
-                    onChange={changeEnteredNameHandler}
-                    type="text"></input>
-                </div>
-                <br/>
-                <div>
-                    <label>Ingredientes</label><br/>
-                    <input value={enteredIngredients}
-                    onChange={changeEnteredIngredientsHandler}
-                    type="text"></input>
-                </div>
-                <br/>
-                <div>
-                    <label>Preparacion</label><br/>
-                    <input value={enteredPreparation}
-                    onChange={changeEnteredPreparationHandler}
-                    type="text"></input>
-                </div>
-                <br/>
-                <div>
-                    <label>Chef</label><br/>
-                    <input value={enteredChef}
-                    onChange={changeEnteredChefHandler}
-                    type="text"></input>
-                </div>
-                <div><br/>
-                <button type="submit">Agregar receta</button>
-                </div>
-            </div>
-        
-        </form>
+    <form onSubmit={crearReceta}>
+      <h2>Agregar nueva receta</h2>
+      <div>
+        <div>
+          <label>Nombre</label>
+          <br />
+          <input
+            value={recipeName}
+            onChange={(event) => setRecipeName(event.target.value)}
+            type='text'
+          ></input>
+        </div>
+        <div>
+          <label>Tiempo de coccion</label>
+          <br />
+          <input
+            value={recipeTime}
+            onChange={(event) => setRecipeTime(event.target.value)}
+            type='text'
+          ></input>
+        </div>
+        <div>
+          <br />
+          <button type='submit'>Agregar receta</button>
+        </div>
+      </div>
+    </form>
   )
 }
 
