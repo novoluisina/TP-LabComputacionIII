@@ -102,10 +102,11 @@ const Recipes = () => {
   const [enteredChef, setEnteredChef] = useState('')
   const [newRecipes, setNewRecipes] = useState(recipes)
   const[showForm,setShowFom]=useState(true)
-  const[newComment,setNewComment]=useState([])
+  const[comments,setComments]=useState([])
+  const[newComment,setNewComment]=useState('')
 
   const newRecipeId = newRecipes[newRecipes.length - 1].id + 1;
-  const newCommentId = newComment.length > 0 ? newComment[newComment.length - 1].id + 1 : 1;
+  const newCommentId = comments.length > 0 ? comments[comments.length - 1].id + 1 : 1;
 
   const setEnteredNameHandler = (value) => {
     setEnteredName(value)
@@ -153,21 +154,29 @@ const Recipes = () => {
     setNewComment(value)
   }
 
-  // const addCommentHandler = () => {
-  //   const commentData = {
-  //     id: newCommentId,
-  //     textComment: newComment,
-  //   };
-  //   setNewComment([...newComment, commentData]);
-  //   setNewComment('');
-  // };
+  const addCommentHandler = () => {
+    if (newComment.trim() === '') {
+      return; // Evitar comentarios vacíos
+    }
+
+    const commentData = {
+      id: newCommentId,
+      text: newComment,
+    };
+    setComments((prevComments) => [...prevComments, commentData]);
+    setNewComment('');
+  };
+
+  const deletedComment = (id) => {
+    setComments((prevComments) => prevComments.filter((comment) => comment.id !== id));
+  }
 
   return (
     <div>
       {/* <RecipeItem recipes={newRecipes} /> */}
       <div className='CardsContainer'>
         {newRecipes.map(({ id, title, time, asset }) => {
-          return <CardRecipe id={id} title={title} time={time} asset={asset} onDelete={deletedRecipe}/>
+          return <CardRecipe key={id} id={id} title={title} time={time} asset={asset} onDelete={deletedRecipe}/>
         })}
       </div>
       {showForm ? (<button type="button" onClick={changeShowFormHandler}>Agregar Nueva Receta</button>)
@@ -185,7 +194,13 @@ const Recipes = () => {
       />)}
 
       <div>
-        <Comment setCommentHandler={setCommentHandler} />
+          <Comment
+          comments={comments}
+          setCommentHandler={setCommentHandler}
+          addCommentHandler={addCommentHandler}
+          newComment={newComment}
+          deletedComment={deletedComment}
+        />
       </div>
       
     </div>
