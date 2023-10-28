@@ -139,11 +139,11 @@ const Recipes = () => {
     setEnteredChef('')
   }
   const deletedRecipe = (id) => {
-    const updatedRecipes = newRecipes.filter((recipe) => recipe.id !== id);
-    const updatedRecipesWithNewIds = updatedRecipes.map((recipe, index) => ({
-      ...recipe,id: index + 1,}));
+    setNewRecipes(newRecipes.filter((recipe) => recipe.id !== id));
+    // const updatedRecipesWithNewIds = updatedRecipes.map((recipe, index) => ({
+    //   ...recipe,id: index + 1,}));
     
-    setNewRecipes(updatedRecipesWithNewIds);
+    // setNewRecipes(updatedRecipesWithNewIds);
   }
 
   const changeShowFormHandler=()=>{
