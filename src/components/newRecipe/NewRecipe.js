@@ -13,7 +13,7 @@ const NewRecipe = () => {
       headers: {
         'Content-Type': 'application/json',
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJBZG1pbmlzdHJhdG9yICIsImF2YXRhciI6Imh0dHBzOi8vcm9ib2hhc2gub3JnL2VhcXVlcXVhc2luY2lkdW50LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjk4NTE4NjY4LCJleHAiOjE2OTg1MTk1Njh9.dJ0DAsyVDAAUer1uVUsFQvEcH4uv93sRkqVKQ5NsCso'
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJBZG1pbmlzdHJhdG9yICIsImF2YXRhciI6Imh0dHBzOi8vcm9ib2hhc2gub3JnL2VhcXVlcXVhc2luY2lkdW50LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjk4NTIwNzM2LCJleHAiOjE2OTg1MjE2MzZ9.Ys8Vu5Nc7A_zFhrHs2x6UxOoO328O6BSyuNp1kOdQu4'
       },
       body: JSON.stringify({
         title: recipeName,
