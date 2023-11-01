@@ -5,7 +5,7 @@ const NewRecipe = () => {
   const [recipeTime, setRecipeTime] = useState('')
   const [recipeAsset, setRecipeAsset] = useState('')
 
-  const crearReceta = (event) => {
+  const createRecipe = (event) => {
     event.preventDefault()
     fetch('http://localhost:8000/recipes', {
       method: 'POST',
@@ -32,7 +32,7 @@ const NewRecipe = () => {
   }
 
   return (
-    <form onSubmit={crearReceta}>
+    <form onSubmit={createRecipe}>
       <h2>Agregar nueva receta</h2>
       <div>
         <div>

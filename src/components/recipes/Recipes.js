@@ -6,6 +6,9 @@ import { CardRecipe } from '../cardRecipe/CardRecipe'
 // import Comment from '../comment/Comment'
 import NewRecipe from '../newRecipe/NewRecipe'
 
+import NewComment from '../newComment/NewComment'
+import CardComment from '../cardComment/CardComment'
+
 const Recipes = () => {
   // const [enteredName, setEnteredName] = useState('')
   // const [enteredIngredients, setEnteredIngredients] = useState('')
@@ -13,7 +16,9 @@ const Recipes = () => {
   // const [enteredChef, setEnteredChef] = useState('')
   // const [newRecipes, setNewRecipes] = useState(recipes)
   const [showForm, setShowFom] = useState(true)
-  const [recetas, setRecetas] = useState([])
+  const [recipes, setRecipes] = useState([])
+  const [comments, setComments] = useState([])
+
 
   useEffect(() => {
     fetch('http://localhost:8000/recipes', {
@@ -26,7 +31,23 @@ const Recipes = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-        setRecetas(data)
+        setRecipes(data)
+      })
+      .catch((err) => alert(err))
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:8000/comments', {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setComments(data)
       })
       .catch((err) => alert(err))
   }, [])
@@ -107,15 +128,20 @@ const Recipes = () => {
         )}
       </div>
       <div className='CardsContainer'>
-        {recetas.map(({ id, title, time, asset }) => {
-          return <CardRecipe id={id} title={title} time={time} asset={asset} />
+        {recipes.map(({ id, title, time, asset }) => {
+          return <CardRecipe key= {id} id={id} title={title} time={time} asset={asset} />
         })}
       </div>
 
-      {/* 
       <div>
-        <Comment setCommentHandler={setCommentHandler} />
-      </div> */}
+        <NewComment />
+      </div>
+
+      <div>
+      {comments.map(({ id, text}) => {
+          return <CardComment key= {id} id ={id} textComment={text} />
+        })}
+      </div>
     </div>
   )
 }
