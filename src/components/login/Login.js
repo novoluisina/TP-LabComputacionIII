@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom';
+
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('')
@@ -71,6 +73,11 @@ const Login = ({ onLogin }) => {
     // navigate('/recetas')
   }
 
+  //CONTROLAR SI ESTA BIEN LA UBICACION DE CODIGO EN QUE SE AGREGÓ
+  const handleNavigateToNewUser = () => {
+    navigate('/newuser'); 
+  };
+
   return (
     <div>
       <div className='login-container'>
@@ -103,6 +110,11 @@ const Login = ({ onLogin }) => {
           >
             Iniciar sesión
           </button>
+          <div>
+            <button type="button" onClick={handleNavigateToNewUser}>
+              Agregar Nuevo Usuario
+            </button>
+          </div>
         </div>
       </div>
     </div>

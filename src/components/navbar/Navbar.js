@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className='Navbar'>
       <ul>
-          <button onClick={handleRegisterClick}>Registrarse</button>
+          <button onClick={handleRegisterClick}>Iniciar sesión</button>
           <button onClick={handleRecipesClick}>Recetas</button>
           <button onClick={handleHomeClick}>Cerrar sesión</button>
       </ul>
