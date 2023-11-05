@@ -94,6 +94,28 @@ const Recipes = () => {
   //   setNewComment('');
   // };
 
+  // const [recipeToDelete, setRecipeToDelete] = useState('')
+  // const onDelete = () => {
+  //   fetch('http://localhost:8000/recipes', {
+  //     method: 'DELETE',
+  //     mode: 'cors',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization:
+  //         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5hbWUiOiJBZG1pbmlzdHJhdG9yICIsImF2YXRhciI6Imh0dHBzOi8vcm9ib2hhc2gub3JnL2VhcXVlcXVhc2luY2lkdW50LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjk4NTIzNTE1LCJleHAiOjE2OTg1MjQ0MTV9.ykpwu0vlv9oUlfPLZyf4d__ZxN-RxgqRjUEc7U4OYos'
+  //     },
+  //     body: JSON.stringify({
+  //       id: 1
+  //     })
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data)
+  //       setRecetas(data)
+  //     })
+  //     .catch((err) => alert(err))
+  // }
+
   return (
     <div>
       {/* <RecipeItem recipes={newRecipes} /> */}
@@ -108,8 +130,21 @@ const Recipes = () => {
       </div>
       <div className='CardsContainer'>
         {recetas.map(({ id, title, time, asset }) => {
-          return <CardRecipe id={id} title={title} time={time} asset={asset} />
+          return (
+            <>
+              <CardRecipe id={id} title={title} time={time} asset={asset} />
+
+              {/* <button onClick={() => onDelete(setRecipeToDelete(id))}>
+                Eliminar receta
+              </button> */}
+            </>
+          )
         })}
+      </div>
+      <div>
+        <button type='button' onClick={changeShowFormHandler}>
+          Agregar Nueva Receta
+        </button>
       </div>
 
       {/* 

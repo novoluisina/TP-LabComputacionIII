@@ -1,6 +1,6 @@
 import './CardRecipe.css'
 
-export const CardRecipe = ({ title, time, asset, id, onDelete }) => {
+export const CardRecipe = ({ title, time, asset, id }) => {
   return (
     <div className='CardRecipe'>
       <div className='CardBodyImg'>
@@ -10,7 +10,6 @@ export const CardRecipe = ({ title, time, asset, id, onDelete }) => {
         <h2>{title}</h2>
         <span>{time}</span>
       </div>
-      <button onClick={() => onDelete(id)}>Eliminar receta</button>
     </div>
   )
 }
