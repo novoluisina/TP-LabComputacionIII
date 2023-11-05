@@ -34,8 +34,8 @@ const Login = () => {
   }
 
   //CONTROLAR SI ESTA BIEN LA UBICACION DE CODIGO EN QUE SE AGREGÓ
-  const handleNavigateToNewUser = () => {
-    navigate('/newuser')
+  const handleNavigateToRegister = () => {
+    navigate('/registrar')
   }
 
   return (
@@ -67,8 +67,8 @@ const Login = () => {
           />
         </div>
         <button type='submit'>Iniciar sesión</button>
-        <button type='button' onClick={handleNavigateToNewUser}>
-          Agregar Nuevo Usuario
+        <button type='button' onClick={handleNavigateToRegister}>
+          Registrarse
         </button>
       </form>
       {message && <p>{message}</p>}

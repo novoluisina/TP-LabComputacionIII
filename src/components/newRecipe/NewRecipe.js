@@ -19,25 +19,23 @@ const NewRecipe = ({ setRecipes, setShowFom }) => {
       userId: user.id
     }
 
-    postRecipes(user.accessToken, newRecipe, user.refreshToken).then(
-      (insertRecipe) => {
-        if (insertRecipe?.accessToken) {
-          // Si vuelve un AccessToken es porque el que se envio estaba vencido, asi que se actualiza
-          // Se deberia generalizar este comportamiento para todos los servicios
-          setUser((prevUser) => {
-            prevUser.accessToken = insertRecipe.accessToken
-            return prevUser
-          })
-        }
-        if (insertRecipe?.id) {
-          setRecipes((prevRecipes) => {
-            const newList = prevRecipes.concat(insertRecipe)
-            return newList
-          })
-          setShowFom((prevShow) => !prevShow)
-        }
+    postRecipes(user.accessToken, newRecipe).then((insertRecipe) => {
+      if (insertRecipe?.accessToken) {
+        // Si vuelve un AccessToken es porque el que se envio estaba vencido, asi que se actualiza
+        // Se deberia generalizar este comportamiento para todos los servicios
+        setUser((prevUser) => {
+          prevUser.accessToken = insertRecipe.accessToken
+          return prevUser
+        })
       }
-    )
+      if (insertRecipe?.id) {
+        setRecipes((prevRecipes) => {
+          const newList = prevRecipes.concat(insertRecipe)
+          return newList
+        })
+        setShowFom((prevShow) => !prevShow)
+      }
+    })
   }
 
   return (
@@ -58,6 +56,15 @@ const NewRecipe = ({ setRecipes, setShowFom }) => {
         <input
           value={recipeTime}
           onChange={(event) => setRecipeTime(event.target.value)}
+          type='text'
+        ></input>
+      </div>
+      <div>
+        <label>Url de imagen</label>
+        <br />
+        <input
+          value={recipeAsset}
+          onChange={(event) => setRecipeAsset(event.target.value)}
           type='text'
         ></input>
       </div>

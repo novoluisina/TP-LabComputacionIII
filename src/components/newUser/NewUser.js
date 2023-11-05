@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import useUser from '../../hooks/useUser'
 import { register } from '../../services/register'
 import { useNavigate } from 'react-router'
+import { login } from '../../services/login'
 
 const NewUser = () => {
   const [userFirstName, setUserFirstName] = useState('')
@@ -22,15 +23,20 @@ const NewUser = () => {
       username: userName,
       email: userEmail,
       password: userPassword,
-      role: 'chef'
+      role: role
     }
     register(newUser).then((user) => {
-      if (!user.accessToken) {
+      if (!user?.id) {
         alert(user.message ? user.message : 'No se pudo registrar el usuario')
         return
       }
-      setUser(user)
-      navigate('/')
+      login({
+        email: user.email,
+        password: user.password
+      }).then((user) => {
+        setUser(user)
+        navigate('/')
+      })
     })
   }
 

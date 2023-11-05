@@ -33,7 +33,7 @@ const getRecipes = () => {
     .catch((err) => alert(err))
 }
 
-const postRecipes = (accessToken, newRecipe, rToken) => {
+const postRecipes = (accessToken, newRecipe) => {
   const apiURL = 'http://localhost:8000/recipes'
   return fetch(apiURL, {
     method: 'POST',
@@ -45,17 +45,17 @@ const postRecipes = (accessToken, newRecipe, rToken) => {
     body: JSON.stringify(newRecipe)
   })
     .then((response) => {
-      if (accessToken && response.status === 401 && rToken) {
-        return refreshToken(rToken).then((newTokens) => {
-          // Se vuelve a llamar con el Token actualizado
-          return postRecipes(newTokens.accessToken, newRecipe, '').then(
-            (recipe) => {
-              recipe.accessToken = newTokens.accessToken
-              return recipe
-            }
-          )
-        })
-      }
+      // if (accessToken && response.status === 401 && rToken) {
+      //   return refreshToken(rToken).then((newTokens) => {
+      //     // Se vuelve a llamar con el Token actualizado
+      //     return postRecipes(newTokens.accessToken, newRecipe, '').then(
+      //       (recipe) => {
+      //         recipe.accessToken = newTokens.accessToken
+      //         return recipe
+      //       }
+      //     )
+      //   })
+      // }
       return response.json()
     })
     .then((data) => {

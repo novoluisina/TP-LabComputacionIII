@@ -31,6 +31,10 @@
   font-weight: 600;
 }
 
+.CardInfo > h2 {
+  color: white;
+}
+
 .CardButtons {
   background-color: #163d30;
   padding: 5px;
