@@ -31,6 +31,11 @@ const Login = ({ onLogin }) => {
     })
   }
 
+  //CONTROLAR SI ESTA BIEN LA UBICACION DE CODIGO EN QUE SE AGREGÓ
+  const handleNavigateToNewUser = () => {
+    navigate('/newuser')
+  }
+
   return (
     <div>
       <h1>Login</h1>
@@ -60,6 +65,9 @@ const Login = ({ onLogin }) => {
           />
         </div>
         <button type='submit'>Iniciar sesión</button>
+        <button type='button' onClick={handleNavigateToNewUser}>
+          Agregar Nuevo Usuario
+        </button>
       </form>
       {message && <p>{message}</p>}
     </div>

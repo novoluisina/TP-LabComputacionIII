@@ -5,6 +5,7 @@ import Home from './components/home/Home'
 import Recipes from './components/recipes/Recipes'
 import Protected from './components/protected/Protected'
 import GeneralView from './components/generalView/GeneralView'
+import NewUser from './components/newUser/NewUser'
 import { AuthProvider } from './context/auth'
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
         </GeneralView>
       )
     },
-
     {
       path: '/login',
       element: (
@@ -27,7 +27,6 @@ function App() {
         </GeneralView>
       )
     },
-
     {
       path: '/recetas',
       element: (
@@ -35,6 +34,14 @@ function App() {
           <Protected>
             <Recipes />
           </Protected>
+        </GeneralView>
+      )
+    },
+    {
+      path: '/newuser',
+      element: (
+        <GeneralView>
+          <NewUser />
         </GeneralView>
       )
     }
