@@ -7,28 +7,27 @@ import React, { useState, useEffect } from 'react'
 import { getRecipes } from '../../services/recipes'
 import { getComments } from '../../services/comments'
 import RecipeList from '../../components/recipeList/RecipeList'
+import useUser from '../../hooks/useUser'
+import NewRecipe from '../../components/newRecipe/NewRecipe'
 
-const Recipes = () => {
+const MyRecipes = () => {
   // const [enteredName, setEnteredName] = useState('')
   // const [enteredIngredients, setEnteredIngredients] = useState('')
   // const [enteredPreparation, setEnteredPreparation] = useState('')
   // const [enteredChef, setEnteredChef] = useState('')
   // const [newRecipes, setNewRecipes] = useState(recipes)
-  const [showForm, setShowFom] = useState(true)
   const [recipes, setRecipes] = useState([])
-  const [comments, setComments] = useState([])
+  const [showForm, setShowFom] = useState(true)
+  const { user, userRole } = useUser()
 
   useEffect(() => {
     getRecipes().then((serviceRecipes) => {
-      setRecipes(serviceRecipes)
+      const myRecipes = serviceRecipes.filter((recipe) => {
+        return recipe.userId === user.id
+      })
+      setRecipes(myRecipes)
     })
-  }, [])
-
-  useEffect(() => {
-    getComments().then((serviceComments) => {
-      setComments(serviceComments)
-    })
-  }, [])
+  }, [user])
 
   // const [newComment, setNewComment] = useState([])
 
@@ -115,7 +114,25 @@ const Recipes = () => {
   //     .catch((err) => alert(err))
   // }
 
-  return <RecipeList recipes={recipes} />
+  return (
+    <>
+      {' '}
+      <div>
+        {showForm ? (
+          <button type='button' onClick={changeShowFormHandler}>
+            Agregar Nueva Receta
+          </button>
+        ) : (
+          <NewRecipe setRecipes={setRecipes} setShowFom={setShowFom} />
+        )}
+      </div>
+      <RecipeList
+        recipes={recipes}
+        userRole={userRole}
+        setRecipes={setRecipes}
+      />
+    </>
+  )
 }
 
-export default Recipes
+export default MyRecipes

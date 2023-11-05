@@ -4,7 +4,7 @@ import { getUser } from '../../services/login'
 import useUser from '../../hooks/useUser'
 
 const Protected = ({ children }) => {
-  const { user, setUser } = useUser()
+  const { loading, user, setUser } = useUser()
 
   const isAuth = !!user?.accessToken
 
@@ -13,10 +13,12 @@ const Protected = ({ children }) => {
     setUser(loginUser)
   }, [setUser])
 
-  if (!isAuth) {
-    return <Navigate to='/login' replace />
-  } else {
-    return children
+  if (!loading) {
+    if (!isAuth) {
+      return <Navigate to='/login' replace />
+    } else {
+      return children
+    }
   }
 }
 

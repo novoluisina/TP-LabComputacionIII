@@ -5,9 +5,10 @@ import Home from './pages/Home/index'
 import Recipes from './pages/Recipes/index'
 import Protected from './components/protected/Protected'
 import GeneralView from './components/generalView/GeneralView'
-import NewUser from './components/newUser/NewUser'
 import { UserLoginProvider } from './context/userLogin'
 import Register from './pages/Register'
+import MyRecipes from './pages/MyRecipes'
+import Recipe from './pages/Recipe'
 
 function App() {
   const router = createBrowserRouter([
@@ -32,9 +33,9 @@ function App() {
       path: '/misrecetas',
       element: (
         <GeneralView>
-          {/* <Protected> */}
-          <Recipes />
-          {/* </Protected> */}
+          <Protected>
+            <MyRecipes />
+          </Protected>
         </GeneralView>
       )
     },
@@ -42,9 +43,17 @@ function App() {
       path: '/recetas',
       element: (
         <GeneralView>
-          {/* <Protected> */}
           <Recipes />
-          {/* </Protected> */}
+        </GeneralView>
+      )
+    },
+    {
+      path: '/receta/:id',
+      element: (
+        <GeneralView>
+          <Protected>
+            <Recipe />
+          </Protected>
         </GeneralView>
       )
     },

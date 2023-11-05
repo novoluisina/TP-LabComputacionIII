@@ -7,12 +7,26 @@ const getComments = () => {
     }
   })
     .then((response) => response.json())
+    .then((comments) => comments)
+    .catch((err) => alert(err))
+}
+
+const postComments = (accessToken, newComment) => {
+  return fetch('http://localhost:8000/comments', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`
+    },
+    body: JSON.stringify(newComment)
+  })
+    .then((response) => response.json())
     .then((comments) => {
-      // console.log('Resultado de comment')
-      // console.log(comments)
+      console.log(comments)
       return comments
     })
     .catch((err) => alert(err))
 }
 
-export { getComments }
+export { getComments, postComments }

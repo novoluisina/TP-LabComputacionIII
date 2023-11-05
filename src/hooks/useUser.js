@@ -1,17 +1,19 @@
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import UserLoginContext from '../context/userLogin'
 import { getUser } from '../services/login'
 
 export default function useUser() {
   const { user, setUser } = useContext(UserLoginContext)
+  const [loading, setLoading] = useState(true)
   const userRole = user?.role
 
   useEffect(() => {
     if (user === null) {
       const loginUser = getUser()
-      return setUser(loginUser)
+      setUser(loginUser)
     }
-  }, [user, setUser])
+    setLoading(false)
+  }, [user, setUser, setLoading])
 
-  return { user, setUser, userRole }
+  return { loading, user, setUser, userRole }
 }

@@ -1,14 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-const Comment = ({ setCommentHandler,addCommentHandler,deletedComment,newComment,comments }) => {
+const Comment = ({
+  setCommentHandler,
+  addCommentHandler,
+  deletedComment,
+  newComment,
+  comments
+}) => {
   const onChangeCommentHandler = (event) => {
-    setCommentHandler(event.target.value);
-  };
+    setCommentHandler(event.target.value)
+  }
 
   const changeCommentHandler = (event) => {
-    event.preventDefault();
-    addCommentHandler();
-  };
+    event.preventDefault()
+    addCommentHandler()
+  }
 
   return (
     <form onSubmit={changeCommentHandler}>
@@ -16,25 +22,29 @@ const Comment = ({ setCommentHandler,addCommentHandler,deletedComment,newComment
       <div>
         <div>
           <input
-            type="text"
+            type='text'
             value={newComment}
             onChange={onChangeCommentHandler}
             placeholder='Escribe un comentario'
           ></input>
-          <button type="submit" onClick={addCommentHandler}>Agregar</button>
+          <button type='submit' onClick={addCommentHandler}>
+            Agregar
+          </button>
         </div>
-          
-      <div>
-        {comments.map((comment) => (
-          <div key={comment.id}>
-            <p>{comment.text}</p>
-            <button onClick={() => deletedComment(comment.id)}>Eliminar</button>
-          </div>
-        ))}
-      </div>
+
+        <div>
+          {comments.map((comment) => (
+            <div key={comment.id}>
+              <p>{comment.text}</p>
+              <button onClick={() => deletedComment(comment.id)}>
+                Eliminar
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default Comment;
+export default Comment

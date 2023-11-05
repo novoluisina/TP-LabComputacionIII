@@ -1,0 +1,12 @@
+.RecipePageContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.NewComment {
+  display: flex;
+}
+
+.NewComment > p {
+  margin: 0;
+}
