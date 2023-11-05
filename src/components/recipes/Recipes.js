@@ -19,7 +19,6 @@ const Recipes = () => {
   const [recipes, setRecipes] = useState([])
   const [comments, setComments] = useState([])
 
-
   useEffect(() => {
     fetch('http://localhost:8000/recipes', {
       method: 'GET',
@@ -30,7 +29,7 @@ const Recipes = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         setRecipes(data)
       })
       .catch((err) => alert(err))
@@ -46,7 +45,8 @@ const Recipes = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        // console.log('Resultado de comment')
+        // console.log(data)
         setComments(data)
       })
       .catch((err) => alert(err))
@@ -150,21 +150,16 @@ const Recipes = () => {
         )}
       </div>
       <div className='CardsContainer'>
-<<<<<<< HEAD
-        {recetas.map(({ id, title, time, asset }) => {
+        {recipes.map(({ id, title, time, asset }) => {
           return (
-            <>
+            <div key={id}>
               <CardRecipe id={id} title={title} time={time} asset={asset} />
 
               {/* <button onClick={() => onDelete(setRecipeToDelete(id))}>
                 Eliminar receta
               </button> */}
-            </>
+            </div>
           )
-=======
-        {recipes.map(({ id, title, time, asset }) => {
-          return <CardRecipe key= {id} id={id} title={title} time={time} asset={asset} />
->>>>>>> 836227e572847c7e2e2e182ef76a475e2e3fec4a
         })}
       </div>
       <div>
@@ -178,8 +173,8 @@ const Recipes = () => {
       </div>
 
       <div>
-      {comments.map(({ id, text}) => {
-          return <CardComment key= {id} id ={id} textComment={text} />
+        {comments.map(({ id, text }) => {
+          return <CardComment key={id} id={id} textComment={text} />
         })}
       </div>
     </div>

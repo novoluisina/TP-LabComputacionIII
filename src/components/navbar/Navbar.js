@@ -1,28 +1,32 @@
-import React from 'react'
-import {useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Navbar.css'
+import AuthContext from '../../context/auth'
 
 const Navbar = () => {
+  const { setUser } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const handleRegisterClick = () => {
-   navigate("/login")
-  };
-
-  const handleHomeClick =() =>{
-    navigate("/")
+    navigate('/registrar')
   }
 
-  const handleRecipesClick=()=>{
-    navigate("/recetas")
+  const handleLogOut = () => {
+    localStorage.removeItem('user')
+    setUser({})
+    navigate('/login')
+  }
+
+  const handleRecipesClick = () => {
+    navigate('/recetas')
   }
 
   return (
     <nav className='Navbar'>
       <ul>
-          <button onClick={handleRegisterClick}>Registrarse</button>
-          <button onClick={handleRecipesClick}>Recetas</button>
-          <button onClick={handleHomeClick}>Cerrar sesión</button>
+        <button onClick={handleRegisterClick}>Registrarse</button>
+        <button onClick={handleRecipesClick}>Recetas</button>
+        <button onClick={handleLogOut}>Cerrar sesión</button>
       </ul>
     </nav>
   )
