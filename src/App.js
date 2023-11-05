@@ -1,12 +1,13 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
-import Login from './components/login/Login'
-import Home from './components/home/Home'
-import Recipes from './components/recipes/Recipes'
+import Login from './pages/Login/index'
+import Home from './pages/Home/index'
+import Recipes from './pages/Recipes/index'
 import Protected from './components/protected/Protected'
 import GeneralView from './components/generalView/GeneralView'
 import NewUser from './components/newUser/NewUser'
-import { AuthProvider } from './context/auth'
+import { UserLoginProvider } from './context/userLogin'
+import Register from './pages/Register'
 
 function App() {
   const router = createBrowserRouter([
@@ -28,29 +29,39 @@ function App() {
       )
     },
     {
-      path: '/recetas',
+      path: '/misrecetas',
       element: (
         <GeneralView>
-          <Protected>
-            <Recipes />
-          </Protected>
+          {/* <Protected> */}
+          <Recipes />
+          {/* </Protected> */}
         </GeneralView>
       )
     },
     {
-      path: '/newuser',
+      path: '/recetas',
       element: (
         <GeneralView>
-          <NewUser />
+          {/* <Protected> */}
+          <Recipes />
+          {/* </Protected> */}
+        </GeneralView>
+      )
+    },
+    {
+      path: '/registrar',
+      element: (
+        <GeneralView>
+          <Register />
         </GeneralView>
       )
     }
   ])
 
   return (
-    <AuthProvider>
+    <UserLoginProvider>
       <RouterProvider router={router} />
-    </AuthProvider>
+    </UserLoginProvider>
   )
 }
 export default App

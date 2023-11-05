@@ -1,11 +1,13 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
-import { getUser, login } from '../../services/login'
+import { login } from '../../services/login'
+import useUser from '../../hooks/useUser'
 
-const Login = ({ onLogin }) => {
+const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
+  const { user, setUser } = useUser()
 
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
@@ -13,11 +15,10 @@ const Login = ({ onLogin }) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Valida si ya esta logeado, si lo esta lo manda a recetas
-    const loginUser = getUser()
-    const isAuth = !!loginUser?.accessToken
-    if (isAuth) navigate('/recetas')
-  }, [navigate])
+    // Valida si ya esta logeado, si lo esta lo manda a la home
+    const isAuth = !!user?.accessToken
+    if (isAuth) navigate('/')
+  }, [navigate, user])
 
   const signInHandler = (event) => {
     event.preventDefault()
@@ -27,7 +28,8 @@ const Login = ({ onLogin }) => {
       password: password
     }).then((user) => {
       if (user.error) return setMessage(user.error)
-      navigate('/recetas')
+      setUser(user)
+      navigate('/')
     })
   }
 

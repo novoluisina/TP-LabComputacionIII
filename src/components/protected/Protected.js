@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Navigate } from 'react-router'
-import AuthContext from '../../context/auth'
 import { getUser } from '../../services/login'
+import useUser from '../../hooks/useUser'
 
 const Protected = ({ children }) => {
-  const { user, setUser } = useContext(AuthContext)
+  const { user, setUser } = useUser()
 
   const isAuth = !!user?.accessToken
 

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './Recipes.css'
-
 // import RecipeItem from '../recipeItem/RecipeItem'
-import { CardRecipe } from '../cardRecipe/CardRecipe'
+import { CardRecipe } from '../../components/cardRecipe/CardRecipe'
 // import Comment from '../comment/Comment'
-import NewRecipe from '../newRecipe/NewRecipe'
-
-import NewComment from '../newComment/NewComment'
-import CardComment from '../cardComment/CardComment'
+import NewRecipe from '../../components/newRecipe/NewRecipe'
+import NewComment from '../../components/newComment/NewComment'
+import CardComment from '../../components/cardComment/CardComment'
+import { getRecipes } from '../../services/recipes'
+import { getComments } from '../../services/comments'
 
 const Recipes = () => {
   // const [enteredName, setEnteredName] = useState('')
@@ -20,36 +20,15 @@ const Recipes = () => {
   const [comments, setComments] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/recipes', {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    getRecipes().then((serviceRecipes) => {
+      setRecipes(serviceRecipes)
     })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data)
-        setRecipes(data)
-      })
-      .catch((err) => alert(err))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8000/comments', {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    getComments().then((serviceComments) => {
+      setComments(serviceComments)
     })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log('Resultado de comment')
-        // console.log(data)
-        setComments(data)
-      })
-      .catch((err) => alert(err))
   }, [])
 
   // const [newComment, setNewComment] = useState([])

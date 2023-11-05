@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import useUser from '../../hooks/useUser'
+import { register } from '../../services/register'
+import { useNavigate } from 'react-router'
 
 const NewUser = () => {
   const [userFirstName, setUserFirstName] = useState('')
@@ -6,31 +9,29 @@ const NewUser = () => {
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
+  const [role, setRole] = useState('user')
+  const { setUser } = useUser()
+
+  const navigate = useNavigate()
 
   const crearUsuario = (event) => {
     event.preventDefault()
-    fetch('http://localhost:8000/users', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJBZG1pbmlzdHJhdG9yICIsImF2YXRhciI6Imh0dHBzOi8vcm9ib2hhc2gub3JnL2VhcXVlcXVhc2luY2lkdW50LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjk4NTIwNzM2LCJleHAiOjE2OTg1MjE2MzZ9.Ys8Vu5Nc7A_zFhrHs2x6UxOoO328O6BSyuNp1kOdQu4'
-      },
-      body: JSON.stringify({ 
-        firstName: userFirstName,
-        lastName: userLastName,
-        username: userName,
-        email: userEmail,
-        password: userPassword,
-      })
+    const newUser = {
+      firstName: userFirstName,
+      lastName: userLastName,
+      username: userName,
+      email: userEmail,
+      password: userPassword,
+      role: 'chef'
+    }
+    register(newUser).then((user) => {
+      if (!user.accessToken) {
+        alert(user.message ? user.message : 'No se pudo registrar el usuario')
+        return
+      }
+      setUser(user)
+      navigate('/')
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Usuario creado')
-        console.log(data)
-      })
-      .catch((err) => console.error(err))
   }
 
   return (
@@ -80,6 +81,17 @@ const NewUser = () => {
             value={userPassword}
             onChange={(event) => setUserPassword(event.target.value)}
             type='text'
+          ></input>
+        </div>
+        <div>
+          <label>Soy chef</label>
+          <br />
+          <input
+            type='checkbox'
+            value={role}
+            onChange={(event) => {
+              setRole(event.target.checked ? 'chef' : 'user')
+            }}
           ></input>
         </div>
         <div>
