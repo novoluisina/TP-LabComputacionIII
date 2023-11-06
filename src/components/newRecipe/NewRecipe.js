@@ -6,7 +6,7 @@ const NewRecipe = ({ setRecipes, setShowFom }) => {
   const [recipeName, setRecipeName] = useState('')
   const [recipeTime, setRecipeTime] = useState('')
   const [recipeAsset, setRecipeAsset] = useState('')
-  const { user, setUser } = useUser()
+  const { user } = useUser()
 
   const createRecipe = (event) => {
     event.preventDefault()
@@ -20,14 +20,14 @@ const NewRecipe = ({ setRecipes, setShowFom }) => {
     }
 
     postRecipes(user.accessToken, newRecipe).then((insertRecipe) => {
-      if (insertRecipe?.accessToken) {
-        // Si vuelve un AccessToken es porque el que se envio estaba vencido, asi que se actualiza
-        // Se deberia generalizar este comportamiento para todos los servicios
-        setUser((prevUser) => {
-          prevUser.accessToken = insertRecipe.accessToken
-          return prevUser
-        })
-      }
+      // if (insertRecipe?.accessToken) {
+      //   // Si vuelve un AccessToken es porque el que se envio estaba vencido, asi que se actualiza
+      //   // Se deberia generalizar este comportamiento para todos los servicios
+      //   setUser((prevUser) => {
+      //     prevUser.accessToken = insertRecipe.accessToken
+      //     return prevUser
+      //   })
+      // }
       if (insertRecipe?.id) {
         setRecipes((prevRecipes) => {
           const newList = prevRecipes.concat(insertRecipe)

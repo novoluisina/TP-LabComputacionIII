@@ -25,6 +25,7 @@ const NewUser = () => {
       password: userPassword,
       role: role
     }
+
     register(newUser).then((user) => {
       if (!user?.id) {
         alert(user.message ? user.message : 'No se pudo registrar el usuario')

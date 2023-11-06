@@ -1,16 +1,14 @@
 import React from 'react'
 import Navbar from '../navbar/Navbar'
 
-const GeneralView = ({children}) => {
+const GeneralView = ({ children }) => {
   return (
     <div>
-        <Navbar/>
+      <Navbar />
 
-         {children}
-         
-        <footer>
+      {children}
 
-        </footer>
+      <footer></footer>
     </div>
   )
 }
