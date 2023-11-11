@@ -87,7 +87,7 @@ const NewUser = () => {
           <input
             value={userPassword}
             onChange={(event) => setUserPassword(event.target.value)}
-            type='text'
+            type='password'
           ></input>
         </div>
         <div>
