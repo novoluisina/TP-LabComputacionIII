@@ -85,4 +85,23 @@ const deleteRecipes = (accessToken, id) => {
     .catch((err) => alert(err))
 }
 
-export { getRecipe, getRecipes, postRecipes, deleteRecipes }
+const editRecipe = (accessToken, id, updatedRecipe) => {
+  const apiURL = `http://localhost:8000/recipes/${id}`;
+  return fetch(apiURL, {
+    method: 'PUT', 
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(updatedRecipe), // Los cambios realizados en la receta
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        return { message: 'Receta actualizada correctamente' };
+      }
+      return { message: 'Error al actualizar la receta' };
+    })
+    .catch((err) => alert(err));
+};
+export { getRecipe, getRecipes, postRecipes, deleteRecipes, editRecipe }
