@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router'
 import useUser from '../../hooks/useUser'
-import { deleteRecipes } from '../../services/recipes'
+import { deleteRecipes, editRecipe } from '../../services/recipes'
 import './CardRecipe.css'
+
 
 export const CardRecipe = ({
   title,
@@ -44,7 +45,7 @@ export const CardRecipe = ({
       </div>
       {userRole === 'chef' && (
         <div className='CardButtons'>
-          <p>✏️</p>
+          <p onClick={editRecipe}>✏️</p>
           <p onClick={handleDelete}>❌</p>
         </div>
       )}
