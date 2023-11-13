@@ -36,9 +36,7 @@ const Comment = ({
           {comments.map((comment) => (
             <div key={comment.id}>
               <p>{comment.text}</p>
-              <button onClick={() => deletedComment(comment.id)}>
-                Eliminar
-              </button>
+              <button onClick={() => deletedComment(comment.id)}></button>
             </div>
           ))}
         </div>

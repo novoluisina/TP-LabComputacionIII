@@ -29,4 +29,24 @@ const postComments = (accessToken, newComment) => {
     .catch((err) => alert(err))
 }
 
-export { getComments, postComments }
+const deleteComments = (accessToken, id) => {
+  const apiURL = `http://localhost:8000/comments/${id}`
+  return fetch(apiURL, {
+    method: 'DELETE',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
+    .then((response) => {
+      if (response.status === 200)
+        return { message: 'Comentario eliminado correctamente' }
+      return { message: 'Error al eliminar comentario' }
+    })
+    .then((message) => {
+      return message
+    })
+    .catch((err) => alert(err))
+}
+export { getComments, postComments, deleteComments }
