@@ -93,4 +93,4 @@ const NewRecipe = ({ setRecipes, setShowFom }) => {
   )
 }
 
-export default NewRecipe
+export default NewRecipe

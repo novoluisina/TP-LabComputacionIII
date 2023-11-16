@@ -30,7 +30,11 @@ const Recipes = () => {
       <div>
         <h2>Comentarios</h2>
         <NewComment recipeId={id} setComments={setComments} />
-        <CommentList comments={comments} setComments={setComments} />
+        <CommentList
+          comments={comments}
+          setComments={setComments}
+          setComments={setComments}
+        />
       </div>
     </>
   )

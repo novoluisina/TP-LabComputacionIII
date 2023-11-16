@@ -71,37 +71,13 @@ export const CardRecipe = ({
           <img alt='Imagen receta' src={asset} />
         </div>
         <div className='CardInfo'>
-          <div>
-            {editingRecipe ? (
-              <input
-                type='text'
-                value={editedTitle}
-                onChange={(e) => setEditedTitle(e.target.value)}
-              />
-            ) : (
-              <h2>{title}</h2>
-            )}
-            {user.id === id && (
-              <p onClick={handleEdit}>{editingRecipe ? '✔️' : '✏️'}</p>
-            )}
-          </div>
-          <div>
-            {editingRecipe ? (
-              <input
-                type='text'
-                value={editedTime}
-                onChange={(e) => setEditedTime(e.target.value)}
-              />
-            ) : (
-              <p>{time}</p>
-            )}
-          </div>
+          <h2>{title}</h2>
+          <span>{time}</span>
         </div>
       </div>
       {userRole === 'chef' && (
         <div className='CardButtons'>
-          <p onClick={() => setEditingRecipe(true)}>✏️</p>
-          {editingRecipe && <p onClick={handleEdit}>✔️</p>}
+          <p onClick={editRecipe}>✏️</p>
           <p onClick={handleDelete}>❌</p>
         </div>
       )}

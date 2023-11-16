@@ -37,10 +37,10 @@ const NewComment = ({ recipeId, setComments }) => {
         />
       </div>
       <div>
-        <button type='submit'>▶️</button>
+        <button type='submit'>▶</button>
       </div>
     </form>
   )
 }
 
-export default NewComment
+export default NewComment

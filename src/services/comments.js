@@ -49,25 +49,4 @@ const deleteComments = (accessToken, id) => {
     })
     .catch((err) => alert(err))
 }
-const editComments = (accessToken, id, newCommentEdit) => {
-  const apiURL = `http://localhost:8000/comments/${id}`
-  return fetch(apiURL, {
-    method: 'PATCH',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`
-    },
-    body: JSON.stringify(newCommentEdit)
-  })
-    .then((response) => {
-      if (response.status === 200)
-        return { message: 'Comentario editado correctamente' }
-      return { message: 'Error al editar comentario' }
-    })
-    .then((message) => {
-      return message
-    })
-    .catch((err) => alert(err))
-}
-export { getComments, postComments, deleteComments, editComments }
+export { getComments, postComments, deleteComments }

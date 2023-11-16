@@ -43,4 +43,4 @@ const MyRecipes = () => {
   )
 }
 
-export default MyRecipes
+export default MyRecipes
