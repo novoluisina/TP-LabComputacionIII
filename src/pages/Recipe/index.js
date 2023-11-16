@@ -35,9 +35,13 @@ const Recipe = () => {
             clickable={false}
           />
           <div>
+            <h2>Preparación:</h2>
+            <p>{recipe.steps}</p>
+          </div>
+          <div>
             <h2>Comentarios</h2>
             <NewComment recipeId={id} setComments={setComments} />
-            <CommentList comments={comments} />
+            <CommentList comments={comments} setComments={setComments} />
           </div>
         </div>
       )}
@@ -45,4 +49,4 @@ const Recipe = () => {
   )
 }
 
-export default Recipe
+export default Recipe

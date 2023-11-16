@@ -105,6 +105,6 @@ export const CardRecipe = ({
           <p onClick={handleDelete}>❌</p>
         </div>
       )}
-    </div>
-  )
+    </div>
+  )
 }

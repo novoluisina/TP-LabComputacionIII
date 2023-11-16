@@ -32,7 +32,7 @@ const getRecipes = () => {
 }
 
 const postRecipes = (accessToken, newRecipe) => {
-  const apiURL = `http://localhost:8000/recipes`
+  const apiURL = 'http://localhost:8000/recipes'
   return fetch(apiURL, {
     method: 'POST',
     mode: 'cors',

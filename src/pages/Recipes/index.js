@@ -29,7 +29,7 @@ const Recipes = () => {
       <div>
         <h2>Comentarios</h2>
         <NewComment />
-        <CommentList comments={comments} />
+        <CommentList comments={comments} setComments={setComments} />
       </div>
     </>
   )

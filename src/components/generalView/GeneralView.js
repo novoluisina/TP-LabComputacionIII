@@ -13,4 +13,4 @@ const GeneralView = ({ children }) => {
   )
 }
 
-export default GeneralView
+export default GeneralView

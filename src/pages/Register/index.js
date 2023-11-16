@@ -4,4 +4,4 @@ const Register = () => {
   return <NewUser></NewUser>
 }
 
-export default Register
+export default Register

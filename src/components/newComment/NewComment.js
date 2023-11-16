@@ -13,7 +13,8 @@ const NewComment = ({ recipeId, setComments }) => {
 
     const newComment = {
       text: textComment,
-      recipeId: recipeId
+      recipeId: recipeId,
+      userId: user.id
     }
 
     postComments(user.accessToken, newComment).then((comment) => {
@@ -36,10 +37,10 @@ const NewComment = ({ recipeId, setComments }) => {
         />
       </div>
       <div>
-        <button type='submit'>▶️</button>
+        <button type='submit'>▶</button>
       </div>
     </form>
   )
 }
 
-export default NewComment
+export default NewComment

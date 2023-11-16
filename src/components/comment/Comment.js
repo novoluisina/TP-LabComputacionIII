@@ -1,4 +1,5 @@
 import React from 'react'
+import { editComments } from '../../services/comments'
 
 const Comment = ({
   setCommentHandler,
@@ -37,6 +38,7 @@ const Comment = ({
             <div key={comment.id}>
               <p>{comment.text}</p>
               <button onClick={() => deletedComment(comment.id)}></button>
+              <button onClick={() => editComments(comment.id)}></button>
             </div>
           ))}
         </div>
@@ -45,4 +47,4 @@ const Comment = ({
   )
 }
 
-export default Comment
+export default Comment

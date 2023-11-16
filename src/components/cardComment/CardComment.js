@@ -56,7 +56,7 @@ const CardComment = ({ textComment, userId, commentId, setComments }) => {
         <p>{textComment}</p>
       )}
       {user.id === userId && (
-        <p onClick={editarComentario}>{editing ? '✔️' : '✏️'}</p>
+        <p onClick={editarComentario}>{editing ? '✔' : '✏'}</p>
       )}
       {!editing && user.id === userId && <p onClick={borrarUnComentario}>❌</p>}
     </div>

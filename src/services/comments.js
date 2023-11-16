@@ -70,4 +70,4 @@ const editComments = (accessToken, id, newCommentEdit) => {
     })
     .catch((err) => alert(err))
 }
-export { getComments, postComments, deleteComments, editComments }
+export { getComments, postComments, deleteComments, editComments }
