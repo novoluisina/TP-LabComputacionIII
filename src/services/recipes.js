@@ -1,5 +1,3 @@
-import { refreshToken } from './refreshToken'
-
 const getRecipe = (id) => {
   const apiURL = `http://localhost:8000/recipes/${id}`
   return fetch(apiURL, {
@@ -34,7 +32,7 @@ const getRecipes = () => {
 }
 
 const postRecipes = (accessToken, newRecipe) => {
-  const apiURL = 'http://localhost:8000/recipes'
+  const apiURL = `http://localhost:8000/recipes`
   return fetch(apiURL, {
     method: 'POST',
     mode: 'cors',
@@ -45,17 +43,6 @@ const postRecipes = (accessToken, newRecipe) => {
     body: JSON.stringify(newRecipe)
   })
     .then((response) => {
-      // if (accessToken && response.status === 401 && rToken) {
-      //   return refreshToken(rToken).then((newTokens) => {
-      //     // Se vuelve a llamar con el Token actualizado
-      //     return postRecipes(newTokens.accessToken, newRecipe, '').then(
-      //       (recipe) => {
-      //         recipe.accessToken = newTokens.accessToken
-      //         return recipe
-      //       }
-      //     )
-      //   })
-      // }
       return response.json()
     })
     .then((data) => {
@@ -86,22 +73,24 @@ const deleteRecipes = (accessToken, id) => {
 }
 
 const editRecipe = (accessToken, id, updatedRecipe) => {
-  const apiURL = `http://localhost:8000/recipes/${id}`;
+  const apiURL = `http://localhost:8000/recipes/${id}`
   return fetch(apiURL, {
-    method: 'PUT', 
+    method: 'PATCH',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${accessToken}`
     },
-    body: JSON.stringify(updatedRecipe), // Los cambios realizados en la receta
+    body: JSON.stringify(updatedRecipe)
   })
     .then((response) => {
-      if (response.status === 200) {
-        return { message: 'Receta actualizada correctamente' };
-      }
-      return { message: 'Error al actualizar la receta' };
+      if (response.status === 200)
+        return { message: 'Receta editado correctamente' }
+      return { message: 'Error al editar receta' }
     })
-    .catch((err) => alert(err));
-};
+    .then((message) => {
+      return message
+    })
+    .catch((err) => alert(err))
+}
 export { getRecipe, getRecipes, postRecipes, deleteRecipes, editRecipe }
