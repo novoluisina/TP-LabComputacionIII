@@ -1,10 +1,10 @@
-export const login = ({ email, password }) => {
+export const login = ({ username, password }) => {
   const apiURL = 'http://localhost:8000/login/'
   return fetch(apiURL, {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     body: JSON.stringify({
-      email,
+      username,
       password
     })
   })

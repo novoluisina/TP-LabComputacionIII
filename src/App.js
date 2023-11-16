@@ -9,6 +9,7 @@ import { UserLoginProvider } from './context/userLogin'
 import Register from './pages/Register'
 import MyRecipes from './pages/MyRecipes'
 import Recipe from './pages/Recipe'
+import UserList from './pages/Users'
 
 function App() {
   const router = createBrowserRouter([
@@ -62,6 +63,14 @@ function App() {
       element: (
         <GeneralView>
           <Register />
+        </GeneralView>
+      )
+    },
+    {
+      path: '/users',
+      element: (
+        <GeneralView>
+          <UserList />
         </GeneralView>
       )
     }

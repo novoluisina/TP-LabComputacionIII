@@ -13,7 +13,8 @@ const NewComment = ({ recipeId, setComments }) => {
 
     const newComment = {
       text: textComment,
-      recipeId: recipeId
+      recipeId: recipeId,
+      userId: user.id
     }
 
     postComments(user.accessToken, newComment).then((comment) => {

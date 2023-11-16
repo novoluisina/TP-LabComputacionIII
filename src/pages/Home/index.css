@@ -1,0 +1,72 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  background-color: #163d3015;
+}
+
+.containerIndex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50vh;
+  background-image: url('https://imagenes.20minutos.es/files/image_640_360/uploads/imagenes/2023/04/03/mesa-llena-de-comida-arabe.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.textos {
+  text-align: center;
+  color: white;
+  font-size: 3em;
+}
+
+.fakeFooter {
+  display: flex;
+  flex-direction: column; /* Cambiado a columna para que el h2 aparezca arriba */
+  align-items: center; /* Centrar elementos horizontalmente */
+  background-color: #163d30; /* Color de fondo de la sección (puedes ajustarlo según tu diseño) */
+  padding: 20px; /* Espaciado interno */
+}
+
+.fundadoresInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+
+.fundador {
+  text-align: center;
+}
+
+.fundador img {
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  width: 150px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: 150px;
+  object-fit: cover; /* Ajusta el objeto para que se ajuste en el contenedor redondeado */
+}
+
+.fundador h3 {
+  margin-top: 10px; /* Espaciado entre la imagen y el título */
+}
+
+.infoRecetar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px; /* Espaciado entre las columnas */
+}
+
+.infoRecetar > div {
+  max-width: 550px; /* Ancho máximo de cada columna */
+}
+
+.infoRecetar h2 {
+  color: #163d30; /* Color verde para los títulos */
+}
+
+.infoRecetar p {
+  line-height: 1.5; /* Espaciado entre líneas del párrafo */
+}

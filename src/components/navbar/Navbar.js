@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Navbar.css'
+import '../../pages/styles.css'
 import useUser from '../../hooks/useUser'
 
 const Navbar = () => {
@@ -37,20 +38,41 @@ const Navbar = () => {
   return (
     <nav className='Navbar'>
       <ul>
-        <button onClick={handleHomeClick}>Home</button>
+        {/* <button onClick={handleHomeClick}>Home</button> */}
         {userRole === 'chef' && (
-          <button onClick={handleMisRecipesClick}>Mis Recetas</button>
+          <button onClick={handleMisRecipesClick} className='button'>
+            Mis Recetas
+          </button>
         )}
-        <button onClick={handleRecipesClick}>Recetas</button>
-        {/* {!isAuth && <button onClick={handleRegisterClick}>Registrar</button>} */}
-        {isAuth && <button onClick={handleLogOut}>Cerrar sesión</button>}
+        {(userRole === 'chef' || userRole === 'user') && (
+          <button onClick={handleRecipesClick} className='button'>
+            Recetas
+          </button>
+        )}
+
+        {isAuth && (
+          <button onClick={handleLogOut} className='button'>
+            Cerrar sesión
+          </button>
+        )}
         {!isAuth && (
           <button
+            className='button'
             onClick={() => {
               navigate('/login')
             }}
           >
             Iniciar Sesion
+          </button>
+        )}
+        {userRole === 'superAdmin' && (
+          <button
+            className='button'
+            onClick={() => {
+              navigate('/users')
+            }}
+          >
+            Usuarios
           </button>
         )}
       </ul>

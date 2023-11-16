@@ -4,22 +4,23 @@ import { getComments } from '../../services/comments'
 import RecipeList from '../../components/recipeList/RecipeList'
 import NewComment from '../../components/newComment/NewComment'
 import CommentList from '../../components/commentList/CommentList'
+import { useParams } from 'react-router'
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([])
   const [comments, setComments] = useState([])
+  const { id } = useParams()
 
   useEffect(() => {
     getRecipes().then((serviceRecipes) => {
       setRecipes(serviceRecipes)
     })
-  }, [])
-
-  useEffect(() => {
-    getComments().then((serviceComments) => {
-      setComments(serviceComments)
+    getComments().then((comms) => {
+      const recipeComments = comms.filter((comm) => comm.recipeId === id)
+      recipeComments.reverse()
+      setComments(recipeComments)
     })
-  }, [])
+  }, [id])
 
   return (
     <>
@@ -28,11 +29,11 @@ const Recipes = () => {
       </div>
       <div>
         <h2>Comentarios</h2>
-        <NewComment />
-        <CommentList comments={comments} />
+        <NewComment recipeId={id} setComments={setComments} />
+        <CommentList comments={comments} setComments={setComments} />
       </div>
     </>
   )
 }
 
-export default Recipes
+export default Recipes

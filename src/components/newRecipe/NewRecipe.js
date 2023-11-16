@@ -6,6 +6,7 @@ const NewRecipe = ({ setRecipes, setShowFom }) => {
   const [recipeName, setRecipeName] = useState('')
   const [recipeTime, setRecipeTime] = useState('')
   const [recipeAsset, setRecipeAsset] = useState('')
+  const [recipeSteps, setRecipeSteps] = useState('')
   const { user } = useUser()
 
   const createRecipe = (event) => {
@@ -16,7 +17,8 @@ const NewRecipe = ({ setRecipes, setShowFom }) => {
       asset: recipeAsset
         ? recipeAsset
         : 'http://alicante.com.ar/uploads/recetas/2664_receta.jpg',
-      userId: user.id
+      userId: user.id,
+      steps: recipeSteps
     }
 
     postRecipes(user.accessToken, newRecipe).then((insertRecipe) => {
@@ -65,6 +67,15 @@ const NewRecipe = ({ setRecipes, setShowFom }) => {
         <input
           value={recipeAsset}
           onChange={(event) => setRecipeAsset(event.target.value)}
+          type='text'
+        ></input>
+      </div>
+      <div>
+        <label>Preparación</label>
+        <br />
+        <input
+          value={recipeSteps}
+          onChange={(event) => setRecipeSteps(event.target.value)}
           type='text'
         ></input>
       </div>

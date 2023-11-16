@@ -4,12 +4,12 @@ import { login } from '../../services/login'
 import useUser from '../../hooks/useUser'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
+  const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
   const { user, setUser } = useUser()
 
-  const emailRef = useRef(null)
+  const refUserName = useRef(null)
   const passwordRef = useRef(null)
 
   const navigate = useNavigate()
@@ -24,7 +24,7 @@ const Login = () => {
     event.preventDefault()
 
     login({
-      email: emailRef.current.value,
+      username: refUserName.current.value,
       password: password
     }).then((user) => {
       if (user.error) return setMessage(user.error)
@@ -45,13 +45,12 @@ const Login = () => {
         <div className='input-container'>
           <input
             className='input-control'
-            placeholder='Email'
-            // type='email'
+            placeholder='Nombre de usuario'
             onChange={(event) => {
-              setEmail(event.target.value)
+              setUserName(event.target.value)
             }}
-            value={email}
-            ref={emailRef}
+            value={userName}
+            ref={refUserName}
           />
         </div>
         <div className='input-container'>
