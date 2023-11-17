@@ -10,6 +10,7 @@ import Register from './pages/Register'
 import MyRecipes from './pages/MyRecipes'
 import Recipe from './pages/Recipe'
 import UserList from './pages/Users'
+import PageNotFound from './pages/PageNotFound/pageNotFound'
 
 function App() {
   const router = createBrowserRouter([
@@ -73,6 +74,14 @@ function App() {
           <UserList />
         </GeneralView>
       )
+    },
+    {
+      path: '*',
+      element: (
+        <GeneralView>
+          <PageNotFound />
+        </GeneralView>
+      )
     }
   ])
 
@@ -82,4 +91,4 @@ function App() {
     </UserLoginProvider>
   )
 }
-export default App
+export default App
