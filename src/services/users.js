@@ -1,5 +1,5 @@
 const postUser = (accessToken, user) => {
-  return fetch('http://localhost:8000/users', {
+  return fetch('https://fake-api-recetas.onrender.com/users', {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -19,7 +19,7 @@ const postUser = (accessToken, user) => {
 export { postUser }
 
 const getUsers = (accessToken) => {
-  const apiURL = 'http://localhost:8000/users'
+  const apiURL = 'https://fake-api-recetas.onrender.com/users'
   return fetch(apiURL, {
     method: 'GET',
     mode: 'cors',
@@ -38,7 +38,7 @@ const getUsers = (accessToken) => {
 export { getUsers }
 
 const deleteUsers = (accessToken, id) => {
-  const apiURL = ` http://localhost:8000/users/${id}`
+  const apiURL = ` https://fake-api-recetas.onrender.com/users/${id}`
   return fetch(apiURL, {
     method: 'DELETE',
     mode: 'cors',

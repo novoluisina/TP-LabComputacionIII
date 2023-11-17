@@ -1,5 +1,5 @@
 export const refreshToken = (refreshToken) => {
-  const apiURL = 'http://localhost:8000/refresh-token'
+  const apiURL = 'https://fake-api-recetas.onrender.com/refresh-token'
   return fetch(apiURL, {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',

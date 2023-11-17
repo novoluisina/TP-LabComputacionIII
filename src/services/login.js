@@ -1,5 +1,5 @@
 export const login = ({ username, password }) => {
-  const apiURL = 'http://localhost:8000/login/'
+  const apiURL = 'https://fake-api-recetas.onrender.com/login/'
   return fetch(apiURL, {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',

@@ -1,5 +1,5 @@
 const register = (user) => {
-  return fetch('http://localhost:8000/register', {
+  return fetch('https://fake-api-recetas.onrender.com/register', {
     method: 'POST',
     mode: 'cors',
     headers: {

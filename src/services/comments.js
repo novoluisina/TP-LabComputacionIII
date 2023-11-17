@@ -1,5 +1,5 @@
 const getComments = () => {
-  return fetch('http://localhost:8000/comments', {
+  return fetch('https://fake-api-recetas.onrender.com/comments', {
     method: 'GET',
     mode: 'cors',
     headers: {
@@ -12,7 +12,7 @@ const getComments = () => {
 }
 
 const postComments = (accessToken, newComment) => {
-  return fetch('http://localhost:8000/comments', {
+  return fetch('https://fake-api-recetas.onrender.com/comments', {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -30,7 +30,7 @@ const postComments = (accessToken, newComment) => {
 }
 
 const deleteComments = (accessToken, id) => {
-  const apiURL = `http://localhost:8000/comments/${id}`
+  const apiURL = `https://fake-api-recetas.onrender.com/comments/${id}`
   return fetch(apiURL, {
     method: 'DELETE',
     mode: 'cors',
@@ -50,7 +50,7 @@ const deleteComments = (accessToken, id) => {
     .catch((err) => alert(err))
 }
 const editComments = (accessToken, id, newCommentEdit) => {
-  const apiURL = `http://localhost:8000/comments/${id}`
+  const apiURL = `https://fake-api-recetas.onrender.com/comments/${id}`
   return fetch(apiURL, {
     method: 'PATCH',
     mode: 'cors',

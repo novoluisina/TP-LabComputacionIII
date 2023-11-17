@@ -1,5 +1,5 @@
 const getRecipe = (id) => {
-  const apiURL = `http://localhost:8000/recipes/${id}`
+  const apiURL = `https://fake-api-recetas.onrender.com/recipes/${id}`
   return fetch(apiURL, {
     method: 'GET',
     mode: 'cors',
@@ -15,7 +15,7 @@ const getRecipe = (id) => {
 }
 
 const getRecipes = () => {
-  const apiURL = 'http://localhost:8000/recipes'
+  const apiURL = 'https://fake-api-recetas.onrender.com/recipes'
   return fetch(apiURL, {
     method: 'GET',
     mode: 'cors',
@@ -32,7 +32,7 @@ const getRecipes = () => {
 }
 
 const postRecipes = (accessToken, newRecipe) => {
-  const apiURL = 'http://localhost:8000/recipes'
+  const apiURL = 'https://fake-api-recetas.onrender.com/recipes'
   return fetch(apiURL, {
     method: 'POST',
     mode: 'cors',
@@ -52,7 +52,7 @@ const postRecipes = (accessToken, newRecipe) => {
 }
 
 const deleteRecipes = (accessToken, id) => {
-  const apiURL = `http://localhost:8000/recipes/${id}`
+  const apiURL = `https://api-recetas-wyj1.onrender.com/recipes/${id}`
   return fetch(apiURL, {
     method: 'DELETE',
     mode: 'cors',
@@ -73,7 +73,7 @@ const deleteRecipes = (accessToken, id) => {
 }
 
 const editRecipe = (accessToken, id, updatedRecipe) => {
-  const apiURL = `http://localhost:8000/recipes/${id}`
+  const apiURL = `https://api-recetas-wyj1.onrender.com/recipes/${id}`
   return fetch(apiURL, {
     method: 'PATCH',
     mode: 'cors',
