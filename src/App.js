@@ -77,11 +77,7 @@ function App() {
     },
     {
       path: '*',
-      element: (
-        <GeneralView>
-          <PageNotFound />
-        </GeneralView>
-      )
+      element: <PageNotFound />
     }
   ])
 
