@@ -2,6 +2,12 @@
   display: flex;
   gap: 20px;
 }
+.datosRecipe {
+  display: grid;
+}
+.recipeStyle {
+  display: block;
+}
 
 .NewComment {
   display: flex;

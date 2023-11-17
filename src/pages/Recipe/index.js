@@ -37,25 +37,29 @@ const Recipe = () => {
     <>
       {recipe && (
         <div className='RecipePageContainer'>
-          <CardRecipe
-            id={recipe.id}
-            title={recipe.title}
-            time={recipe.time}
-            asset={recipe.asset}
-            clickable={false}
-          />
-          <div>
-            <h2>Preparación:</h2>
-            <p>{recipe.steps}</p>
+          <div className='recipeStyle'>
+            <CardRecipe
+              id={recipe.id}
+              title={recipe.title}
+              time={recipe.time}
+              asset={recipe.asset}
+              clickable={false}
+            />
           </div>
-          <div>
-            <h2>Ingredientes:</h2>
-            <p>{recipe.ingredients}</p>
-          </div>
-          <div>
-            <h2>Comentarios</h2>
-            <NewComment recipeId={id} setComments={setComments} />
-            <CommentList comments={comments} setComments={setComments} />
+          <div className='datosRecipe'>
+            <div>
+              <h2>Preparación:</h2>
+              <p>{recipe.steps}</p>
+            </div>
+            <div>
+              <h2>Ingredientes:</h2>
+              <p>{recipe.ingredients}</p>
+            </div>
+            <div>
+              <h2>Comentarios</h2>
+              <NewComment recipeId={id} setComments={setComments} />
+              <CommentList comments={comments} setComments={setComments} />
+            </div>
           </div>
         </div>
       )}

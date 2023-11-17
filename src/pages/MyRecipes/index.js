@@ -3,7 +3,7 @@ import { getRecipes } from '../../services/recipes'
 import RecipeList from '../../components/recipeList/RecipeList'
 import useUser from '../../hooks/useUser'
 import NewRecipe from '../../components/newRecipe/NewRecipe'
-
+import './styles.css'
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([])
   const [showForm, setShowFom] = useState(true)
@@ -43,4 +43,4 @@ const MyRecipes = () => {
   )
 }
 
-export default MyRecipes
+export default MyRecipes
