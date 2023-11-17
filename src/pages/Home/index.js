@@ -79,7 +79,7 @@ const Home = () => {
           <div class='fundador'>
             <h3>Mateo Bernardi</h3>
             <img
-              src='https://www.instagram.com/p/CZp9Q4VlzWFxagaAQGV0VCiXLb1kxUBHqRr8TM0/?hl=es-la&img_index=1'
+              src='https://i.ytimg.com/vi/tv29gYCpxkA/maxresdefault.jpg'
               alt='Mateo Bernardi'
             ></img>
           </div>
@@ -104,4 +104,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home
