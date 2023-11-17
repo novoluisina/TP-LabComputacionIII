@@ -6,11 +6,15 @@ import CommentList from '../../components/commentList/CommentList'
 import { getComments } from '../../services/comments'
 import './index.css'
 import NewComment from '../../components/newComment/NewComment'
+import { getUsers } from '../../services/users'
+import useUser from '../../hooks/useUser'
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState([])
   const [comments, setComments] = useState([])
+  const [users, setUsers] = useState([])
   const { id } = useParams()
+  const { user } = useUser()
 
   useEffect(() => {
     getRecipe(id).then((rec) => {
@@ -22,6 +26,12 @@ const Recipe = () => {
       setComments(recipeComments)
     })
   }, [id])
+
+  useEffect(() => {
+    getUsers(user.accessToken)
+      .then((usersData) => setUsers(usersData))
+      .catch((error) => console.error('Error al mostrar usuarios:', error))
+  }, [user])
 
   return (
     <>
@@ -39,6 +49,14 @@ const Recipe = () => {
             <p>{recipe.steps}</p>
           </div>
           <div>
+            <h2>Chef:</h2>
+            <p>{users.firstName}</p>
+          </div>
+          <div>
+            <h2>Ingredientes:</h2>
+            <p>{recipe.ingredients}</p>
+          </div>
+          <div>
             <h2>Comentarios</h2>
             <NewComment recipeId={id} setComments={setComments} />
             <CommentList comments={comments} setComments={setComments} />
@@ -49,4 +67,4 @@ const Recipe = () => {
   )
 }
 
-export default Recipe
+export default Recipe

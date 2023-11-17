@@ -20,4 +20,4 @@ const CommentList = ({ comments, setComments }) => {
   )
 }
 
-export default CommentList
+export default CommentList

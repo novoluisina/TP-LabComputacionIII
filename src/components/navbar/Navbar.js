@@ -44,9 +44,19 @@ const Navbar = () => {
             Mis Recetas
           </button>
         )}
-        <button onClick={handleRecipesClick}>Recetas</button>
-        {/* {!isAuth && <button onClick={handleRegisterClick}>Registrar</button>} */}
-        {isAuth && <button onClick={handleLogOut}>Cerrar sesión</button>}
+        {(userRole === 'chef' ||
+          userRole === 'user' ||
+          userRole === 'superAdmin') && (
+          <button onClick={handleRecipesClick} className='button'>
+            Recetas
+          </button>
+        )}
+
+        {isAuth && (
+          <button onClick={handleLogOut} className='button'>
+            Cerrar sesión
+          </button>
+        )}
         {!isAuth && (
           <button
             className='button'
