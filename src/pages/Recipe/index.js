@@ -49,10 +49,6 @@ const Recipe = () => {
             <p>{recipe.steps}</p>
           </div>
           <div>
-            <h2>Chef:</h2>
-            <p>{users.firstName}</p>
-          </div>
-          <div>
             <h2>Ingredientes:</h2>
             <p>{recipe.ingredients}</p>
           </div>
